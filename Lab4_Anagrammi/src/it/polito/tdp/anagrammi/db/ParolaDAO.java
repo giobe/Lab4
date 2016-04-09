@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class ParolaDAO {
 	
-	public String read(String parola){
+	public boolean cerca(String parola){
 		Connection con = DBConnect.getConnection();
 		
 		try {
@@ -16,16 +16,16 @@ public class ParolaDAO {
 		    ResultSet res= st.executeQuery(sql);
 		    
 		    if(res.next()){
-		    	return res.getString("nome");
+		    	return true;
 		    }else{
-		    	return null;
+		    	return false;
 		    }
 		    
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return false;
 	}
 
 }

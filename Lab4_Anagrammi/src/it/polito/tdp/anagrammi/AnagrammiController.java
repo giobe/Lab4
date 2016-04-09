@@ -1,8 +1,10 @@
 package it.polito.tdp.anagrammi;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import it.polito.tdp.anagrammi.model.Parola;
 import it.polito.tdp.anagrammi.model.Principale;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,11 +36,27 @@ public class AnagrammiController {
 
     @FXML
     void doCerca(ActionEvent event) {
+    	
+    	String parola = txtParola.getText();
+    	Parola p = new Parola(parola);
+    	List<String> anagrammi = (List<String>) model.listaAnagrammi(p);
+    	for(String s : anagrammi){
+    		if(model.controlloEsiste(s)==true){
+    			//metto che abbia colore rosso e la metto nel txtresult
+    		}
+    		else if(model.controlloEsiste(s)!=true){
+    			//metto che abbia clore nero e la metto nel txt result
+    		}
+    			
+    	}
+    	//chiuso il for inserisco tutto nel txtresult forse??
 
     }
 
     @FXML
     void doReset(ActionEvent event) {
+    	txtResult.clear();
+    	txtParola.clear();
 
     }
     public void setModel(Principale model){
